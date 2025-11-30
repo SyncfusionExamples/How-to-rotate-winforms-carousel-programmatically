@@ -1,51 +1,31 @@
-# How to Rotate WinForms Carousel Programmatically
-## Overview
-This example demonstrates how to rotate the WinForms Carousel control programmatically. The Carousel control provides a visually engaging way to display a collection of items in a circular or elliptical layout, commonly used in dashboards, galleries, or product showcases.
+# Programmatic Rotation Demo for Syncfusion WinForms Carousel
+This sample demonstrates how to control and rotate items programmatically in the Syncfusion WinForms Carousel control. It showcases navigating to specific items, step-wise rotation via UI actions, and continuous slideshow-like movement driven by timers or events. The Carousel provides a visually engaging circular/elliptical layout ideal for dashboards, galleries, and product showcases.
 
-## Why Programmatic Rotation?
-In real-world applications, developers often need to control carousel rotation manually. Examples include:
-- Rotating to a specific item based on user input.
-- Continuous rotation for a slideshow effect.
-- Rotation triggered by timers or events.
+## Features
+- Rotate to a specific item programmatically (by index or reference)
+- Step through items using buttons (Next/Previous)
+- Optional continuous rotation using a Timer for slideshow behavior
+- Adjustable rotation speed and direction
+- Visual focus via ActiveItem updates and status display
 
-This sample shows how to implement such functionality using straightforward C# code.
+## Getting Started
+1. Create a new Windows Forms App (.NET Framework) project in Visual Studio.
+2. Install NuGet package: Syncfusion.Tools.Windows.
+3. Add using directive in your form code if needed:
+   - using Syncfusion.Windows.Forms.Tools;
+4. Drop a Carousel control and a Button onto the form (or create them in code).
+5. Populate the Carousel with items (e.g., images or labeled controls), then wire up event handlers to rotate programmatically.
 
-## Key Features Demonstrated
-- Initialize Carousel with a custom collection of items.
-- Rotate programmatically using a button click.
-- Customize rotation speed and direction.
-- Enhance user experience with intuitive navigation.
-
-## Code Example
-``` C#
-#region Windows Form Designer generated code
-/// <summary>
-/// Required method for Designer support - do not modify
-/// the contents of this method with the code editor.
-/// </summary>
-private void InitializeComponent()
-{
-    // Designer code for initializing carousel and button
-}
-#endregion
-
-private int index = 0;
-
-private void buttonAdv_Click(object sender, EventArgs e)
-{
-    // Rotate carousel to the next item
-    this.carousel1.ActiveItem = this.carousel1.Items[index];
-    this.label2.Text = this.carousel1.ActiveItem.Text;
-
-    index++;
-    if (index >= this.carousel1.Items.Count)
-    {
-        index = 0; // Reset index for continuous rotation
-    }
-}
-```
+## Usage Tips
+- Jump directly to an item: set carousel1.ActiveItem to the desired item from carousel1.Items.
+- For continuous rotation, use a System.Windows.Forms.Timer and advance the index each tick.
+- Update a label with the current item’s text to confirm navigation.
+- Debounce or disable UI while animating if you add custom transitions.
 
 ## How It Works
-- **carousel1.ActiveItem** sets the currently active item in the carousel.
-- **index** tracks the current position and loops back when reaching the end.
-- Button click triggers rotation to the next item.
+- carousel1.ActiveItem sets the currently focused/active item in the carousel.
+- index tracks the current position and wraps to the start when it reaches the end.
+- The button click advances to the next item; you can add a Timer to auto-advance for a slideshow.
+
+## About the Sample
+This sample is a concise starting point for adding programmatic navigation to a Syncfusion WinForms Carousel. Extend it with Previous/Next buttons, direct navigation by index or search, and a timer-driven slideshow. You can also bind richer content (images, user controls) and style the control to match your application’s branding.
